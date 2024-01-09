@@ -5,12 +5,12 @@ describe('Ship class', () => {
     const carrier = new Ship(5)
     it('one hit', () => {
         submarine.hit()
-        expect(submarine.hits).toEqual(1)
+        expect(submarine.hits).toBe(1)
     })
     it('two hit', () => {
         carrier.hit()
         carrier.hit()
-        expect(carrier.hits).toEqual(2)
+        expect(carrier.hits).toBe(2)
     })
     it('is not sunk', () => {
         expect(submarine.isSunk()).toBe(false)
