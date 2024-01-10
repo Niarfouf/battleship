@@ -1,6 +1,11 @@
 import Ship from './Ship'
 
 export default class GameBoard {
+    constructor(size = 10) {
+        this.board = this.constructor.createEmptyBoard(size)
+        this.ships = []
+    }
+
     static createEmptyBoard(size) {
         const board = []
         for (let i = 0; i < size; i += 1) {
@@ -13,9 +18,12 @@ export default class GameBoard {
         return board
     }
 
-    constructor(size) {
-        this.board = this.constructor.createEmptyBoard(size)
-        this.ships = []
+    getBoard() {
+        return this.board
+    }
+
+    getShips() {
+        return this.ships
     }
 
     placeShip(length, coordinates) {
@@ -33,16 +41,19 @@ export default class GameBoard {
 
     receiveAttack(coordinate) {
         const markedCell = this.board[coordinate[0]][coordinate[1]]
+        if (markedCell.hasBeenShot === true) {
+            return { false: 'alreadyTouched' }
+        }
         if (markedCell.ship) {
             markedCell.ship.hit()
             markedCell.hasBeenShot = true
             if (markedCell.ship.isSunk()) {
-                return [true, 'sunk']
+                return { true: 'sunk' }
             }
-            return [true, 'touched']
+            return { true: 'touched' }
         }
         markedCell.hasBeenShot = true
-        return false
+        return { true: 'missed' }
     }
 
     allShipsSunk() {

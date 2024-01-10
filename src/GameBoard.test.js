@@ -47,12 +47,16 @@ describe('GameBoard class', () => {
         ).toEqual(true)
     })
     it('receive attack missed shot', () => {
-        expect(gameBoard.receiveAttack([2, 1])).toEqual(false)
+        expect(gameBoard.receiveAttack([2, 1])).toEqual({ true: 'missed' })
     })
     it('receive attack hit shot', () => {
-        expect(gameBoard.receiveAttack([0, 1])).toEqual([true, 'touched'])
+        expect(gameBoard.receiveAttack([0, 1])).toEqual({ true: 'touched' })
     })
-
+    it('receive attack already touched cell', () => {
+        expect(gameBoard.receiveAttack([2, 1])).toEqual({
+            false: 'alreadyTouched',
+        })
+    })
     it('record missed shot', () => {
         expect(gameBoard.board[2][1].hasBeenShot).toEqual(true)
     })
@@ -64,7 +68,7 @@ describe('GameBoard class', () => {
     })
     it('receive attack hit shot and sunk', () => {
         gameBoard.receiveAttack([0, 2])
-        expect(gameBoard.receiveAttack([0, 3])).toEqual([true, 'sunk'])
+        expect(gameBoard.receiveAttack([0, 3])).toEqual({ true: 'sunk' })
     })
     it('ship is sunk', () => {
         expect(gameBoard.ships[0]).toEqual(testShipSunk)
