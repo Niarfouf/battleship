@@ -8,13 +8,31 @@ html {
     box-sizing: inherit;
 }
 body {
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
+    min-height: 100vh;
+}
+
+h1 {
+    margin: 10px;
+}
+#header,
+#footer {
+    height: 57px;
+    background-color: black;
+    color: blue;
+
+    text-align: center;
+}
+
+#main {
+    background-color: aqua;
+    flex: auto;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 500px;
-    gap: 1px;
+    justify-content: space-evenly;
 }
 .red {
     background-color: red;
@@ -22,10 +40,15 @@ body {
 .black {
     background-color: black;
 }
-rect {
-    width: 50px;
-    height: 50px;
+.blue {
+    background-color: blue;
 }
 .yellow {
     background-color: yellow;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+    gap: 1px;
 }

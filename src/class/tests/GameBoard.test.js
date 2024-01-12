@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import GameBoard from './GameBoard'
+import GameBoard from '../GameBoard'
 
 describe('GameBoard class', () => {
     const size = 10

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import Ship from './Ship'
+import Ship from '../Ship'
 
 describe('Ship class', () => {
     const submarine = new Ship(3)

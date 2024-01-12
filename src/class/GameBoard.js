@@ -1,4 +1,4 @@
-import Ship from '../Ship'
+import Ship from './Ship'
 
 export default class GameBoard {
     constructor(size = 10) {
@@ -48,11 +48,11 @@ export default class GameBoard {
         if (markedCell.ship) {
             markedCell.ship.hit()
             if (markedCell.ship.isSunk()) {
-                return { true: 'sunk', coordinate }
+                return { true: 'sunk', coordinate: [...coordinate] }
             }
-            return { true: 'touched', coordinate }
+            return { true: 'touched', coordinate: [...coordinate] }
         }
-        return { true: 'missed', coordinate }
+        return { true: 'missed', coordinate: [...coordinate] }
     }
 
     allShipsSunk() {

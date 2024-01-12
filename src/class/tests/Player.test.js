@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import Player from './Player'
-import GameBoard from './class/GameBoard'
+import Player from '../Player'
+import GameBoard from '../GameBoard'
 
 describe('Player class', () => {
     const gameBoard1 = new GameBoard()
